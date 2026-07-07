@@ -1,23 +1,26 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/jpeg" href="fav.jpg" />
-    <title data-i18n="title">Speed Test</title>
+    <title>Speed Test | Network Analysis</title>
     <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=cabinet-grotesk@400,500,700,800&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root,
-      [data-theme="light"] {
-        --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-        --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-        --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-        --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-        --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      :root {
+        --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+        --text-sm: clamp(0.8rem, 0.75rem + 0.3vw, 0.9rem);
+        --text-base: clamp(0.925rem, 0.875rem + 0.25vw, 1rem);
+        --text-lg: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+        --text-xl: clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
+        --text-2xl: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
+        --text-3xl: clamp(2.5rem, 1.8rem + 3.5vw, 4.5rem);
 
         --space-1: 0.25rem;
         --space-2: 0.5rem;
@@ -28,73 +31,31 @@
         --space-8: 2rem;
         --space-10: 2.5rem;
         --space-12: 3rem;
-        --space-16: 4rem;
-        --space-20: 5rem;
 
-        --color-bg: #f7f6f2;
-        --color-surface: #fbfbf9;
-        --color-surface-2: #f1efe9;
-        --color-border: #d4d1ca;
-        --color-divider: #dcd9d5;
-        --color-text: #222018;
-        --color-text-muted: #72706a;
-        --color-text-faint: #aeaba4;
-        --color-primary: #01696f;
-        --color-primary-hover: #0c4e54;
-        --color-primary-highlight: #d8ece8;
-        --color-success: #437a22;
-        --color-error: #a12c7b;
-        --color-text-inverse: #f9f8f4;
-        --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06);
-        --shadow-md: 0 10px 30px oklch(0.2 0.01 80 / 0.1);
-        --radius-sm: 0.5rem;
-        --radius-md: 0.875rem;
-        --radius-lg: 1.25rem;
-        --radius-xl: 1.75rem;
+        --color-bg: #090c12;
+        --color-surface: #10141d;
+        --color-surface-2: #161b26;
+        --color-border: rgba(173, 188, 214, 0.18);
+        --color-divider: rgba(173, 188, 214, 0.1);
+        --color-text: #edf2f7;
+        --color-text-muted: #9aa8c1;
+        --color-text-faint: #657289;
+        --color-primary: #56c6d8;
+        --color-primary-hover: #7bd7e4;
+        --color-primary-highlight: rgba(86, 198, 216, 0.14);
+        --color-success: #68d391;
+        --color-error: #fb7185;
+        --radius-sm: 0.375rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1rem;
+        --radius-xl: 1.5rem;
         --radius-full: 9999px;
-        --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
-        --font-body: "Satoshi", system-ui, sans-serif;
-        --font-display: "Satoshi", system-ui, sans-serif;
-      }
-
-      [data-theme="dark"] {
-        --color-bg: #171614;
-        --color-surface: #1c1b19;
-        --color-surface-2: #23221f;
-        --color-border: #393836;
-        --color-divider: #262523;
-        --color-text: #ece9e3;
-        --color-text-muted: #aaa79f;
-        --color-text-faint: #6f6c66;
-        --color-primary: #4f98a3;
-        --color-primary-hover: #66b2bd;
-        --color-primary-highlight: #253438;
-        --color-success: #7dbc57;
-        --color-error: #dd6974;
-        --color-text-inverse: #161513;
-        --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.18);
-        --shadow-md: 0 16px 40px oklch(0 0 0 / 0.35);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme]) {
-          --color-bg: #171614;
-          --color-surface: #1c1b19;
-          --color-surface-2: #23221f;
-          --color-border: #393836;
-          --color-divider: #262523;
-          --color-text: #ece9e3;
-          --color-text-muted: #aaa79f;
-          --color-text-faint: #6f6c66;
-          --color-primary: #4f98a3;
-          --color-primary-hover: #66b2bd;
-          --color-primary-highlight: #253438;
-          --color-success: #7dbc57;
-          --color-error: #dd6974;
-          --color-text-inverse: #161513;
-          --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.18);
-          --shadow-md: 0 16px 40px oklch(0 0 0 / 0.35);
-        }
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+        --shadow-md: 0 18px 50px rgba(0, 0, 0, 0.32);
+        --shadow-lg: 0 40px 120px rgba(0, 0, 0, 0.45);
+        --font-body: "Satoshi", "Inter", sans-serif;
+        --font-display: "Cabinet Grotesk", "Satoshi", sans-serif;
+        --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       *,
@@ -104,412 +65,454 @@
         margin: 0;
         padding: 0;
       }
+
       html {
-        -moz-text-size-adjust: none;
-        -webkit-text-size-adjust: none;
-        text-size-adjust: none;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeLegibility;
         scroll-behavior: smooth;
-        hanging-punctuation: first last;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
+
       body {
         min-height: 100dvh;
-        line-height: 1.55;
-        font-family: var(--font-body, sans-serif);
-        font-size: var(--text-base);
-        color: var(--color-text);
         background:
-          radial-gradient(
-            circle at top,
-            color-mix(in oklab, var(--color-primary) 10%, transparent) 0%,
-            transparent 38%
-          ),
+          radial-gradient(circle at 15% 20%, rgba(86, 198, 216, 0.18), transparent 28%),
+          radial-gradient(circle at 85% 15%, rgba(99, 102, 241, 0.14), transparent 24%),
+          radial-gradient(circle at 50% 80%, rgba(52, 211, 153, 0.08), transparent 25%),
+          radial-gradient(circle at 20% 60%, rgba(86, 198, 216, 0.06), transparent 35%),
           var(--color-bg);
-        display: grid;
-        place-items: center;
-        padding: var(--space-3);
+        background-attachment: fixed;
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-4);
         overflow-y: auto;
         overflow-x: hidden;
       }
-      button,
-      input {
+
+      button {
         font: inherit;
         color: inherit;
-      }
-      button {
         cursor: pointer;
-        border: none;
-        transition:
-          transform var(--transition-interactive),
-          background var(--transition-interactive),
-          color var(--transition-interactive),
-          border-color var(--transition-interactive),
-          box-shadow var(--transition-interactive);
+        border: 0;
+        background: none;
       }
-      button:hover {
-        transform: translateY(-1px);
-      }
-      button:active {
-        transform: translateY(0);
-      }
+
       :focus-visible {
         outline: 2px solid var(--color-primary);
         outline-offset: 3px;
         border-radius: var(--radius-sm);
       }
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
+
+      ::selection {
+        background: rgba(86, 198, 216, 0.22);
       }
 
       .app {
-        width: min(100%, 680px);
-        max-height: min(97dvh, 860px);
-        background: color-mix(in oklab, var(--color-surface) 86%, transparent);
-        border: 1px solid
-          color-mix(in oklab, var(--color-text) 10%, transparent);
-        box-shadow: var(--shadow-md);
+        width: min(100%, 640px);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--color-border);
         border-radius: var(--radius-xl);
-        backdrop-filter: blur(16px);
-        overflow-y: auto;
-        overflow-x: hidden;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
       }
 
-      .topbar {
+      .app::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(86, 198, 216, 0.4), transparent);
+      }
+
+      .app-inner {
+        padding: var(--space-6) var(--space-6) var(--space-5);
+        position: relative;
+        z-index: 1;
+      }
+
+      .header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: var(--space-4);
-        padding: var(--space-3) var(--space-4);
-        border-bottom: 1px solid var(--color-divider);
-        background: color-mix(
-          in oklab,
-          var(--color-surface-2) 78%,
-          transparent
-        );
+        margin-bottom: var(--space-5);
       }
 
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-2);
-        font-size: var(--text-sm);
-        font-weight: 700;
-        letter-spacing: 0.02em;
-      }
-
-      .brand svg {
-        width: 1.75rem;
-        height: 1.75rem;
-        color: var(--color-primary);
-        flex: 0 0 auto;
-      }
-
-      .topbar-start {
-        display: flex;
-        align-items: center;
-        gap: var(--space-3);
-      }
-
-      .lang-switcher {
-        position: relative;
-        display: inline-flex;
-      }
-
-      .lang-btn {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: var(--radius-full);
-        display: inline-grid;
-        place-items: center;
-        border: 1px solid
-          color-mix(in oklab, var(--color-text) 12%, transparent);
-        background: var(--color-surface);
-        color: var(--color-text);
-        box-shadow: var(--shadow-sm);
-        font-size: var(--text-sm);
-        font-weight: 700;
-      }
-
-      .lang-dropdown {
-        position: absolute;
-        top: calc(100% + 4px);
-        inset-inline-start: 0;
-        min-width: 8rem;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-md);
-        display: none;
-        flex-direction: column;
-        z-index: 50;
-        overflow: hidden;
-      }
-
-      .lang-dropdown.open {
-        display: flex;
-      }
-
-      .lang-option {
-        padding: var(--space-2) var(--space-3);
-        background: none;
-        border: none;
-        text-align: start;
-        font-size: var(--text-sm);
-        font-weight: 500;
-        color: var(--color-text);
-        cursor: pointer;
-        transition: background var(--transition-interactive);
-      }
-
-      .lang-option:hover {
-        background: var(--color-surface-2);
-      }
-
-      .lang-option.active {
-        background: var(--color-primary-highlight);
-        color: var(--color-primary);
-        font-weight: 700;
-      }
-
-      .theme-toggle {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: var(--radius-full);
-        display: inline-grid;
-        place-items: center;
-        border: 1px solid
-          color-mix(in oklab, var(--color-text) 12%, transparent);
-        background: var(--color-surface);
-        color: var(--color-text);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .panel {
-        padding: clamp(var(--space-6), 4vw, var(--space-10));
+      .header-left {
         display: grid;
-        gap: var(--space-3);
-        text-align: center;
-      }
-
-      .title-wrap {
-        display: grid;
-        gap: var(--space-1);
-        justify-items: center;
+        gap: 0.15rem;
       }
 
       .eyebrow {
-        font-size: var(--text-xs);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.7rem;
+        border-radius: var(--radius-full);
+        border: 1px solid var(--color-border);
+        background: rgba(255, 255, 255, 0.03);
         color: var(--color-text-muted);
-        letter-spacing: 0.16em;
+        font-size: var(--text-xs);
         text-transform: uppercase;
-        font-weight: 700;
+        letter-spacing: 0.14em;
+        width: fit-content;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 50%;
+        background: var(--color-primary);
+        box-shadow: 0 0 0 5px rgba(86, 198, 216, 0.14);
       }
 
       h1 {
-        font-family: var(--font-display, sans-serif);
-        font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
-        font-weight: 900;
-        line-height: 1.05;
+        font-family: var(--font-display);
+        font-size: var(--text-xl);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-top: 0.3rem;
       }
 
-      .subtitle {
-        color: var(--color-text-muted);
-        max-width: 32ch;
-        font-size: var(--text-sm);
+      .header-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: var(--radius-full);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
       }
 
-      .meter {
-        display: grid;
-        gap: var(--space-5);
-        justify-items: center;
+      .header-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: var(--color-primary);
       }
 
-      .speed-shell {
-        width: min(100%, 19rem);
-        aspect-ratio: 1;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-        background:
-          radial-gradient(
-            circle,
-            color-mix(in oklab, var(--color-surface) 86%, transparent) 0 54%,
-            transparent 55%
-          ),
-          conic-gradient(
-            from 270deg,
-            var(--color-primary) calc(var(--progress, 0) * 1%),
-            color-mix(
-                in oklab,
-                var(--color-primary) 12%,
-                var(--color-surface-2)
-              )
-              0
-          );
-        padding: clamp(var(--space-3), 1vw, var(--space-4));
-        box-shadow:
-          inset 0 0 0 1px color-mix(in oklab, var(--color-text) 8%, transparent),
-          var(--shadow-md);
+      .speed-card {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        padding: var(--space-5);
+        margin-bottom: var(--space-4);
         position: relative;
-        isolation: isolate;
+        transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .speed-shell::before {
+      .speed-card:hover {
+        border-color: var(--color-primary-highlight);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .speed-card::after {
         content: "";
         position: absolute;
-        inset: 8%;
-        border-radius: 50%;
-        background: var(--color-bg);
-        border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
-        z-index: -1;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(86, 198, 216, 0.3), transparent);
       }
 
-      .speed-core {
-        display: grid;
-        gap: var(--space-2);
-        justify-items: center;
-        align-content: center;
-        width: 74%;
+      .speed-label-top {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-align: center;
+        margin-top: var(--space-2);
       }
 
       .speed-value {
-        font-size: clamp(2.5rem, 7vw, 4.2rem);
-        line-height: 0.9;
-        font-weight: 900;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 10vw, 5.5rem);
+        font-weight: 800;
         letter-spacing: -0.04em;
+        line-height: 1;
         font-variant-numeric: tabular-nums lining-nums;
+        color: var(--color-text);
+        transition: color 0.3s ease;
+        text-align: center;
       }
 
-      .speed-unit {
-        font-size: var(--text-sm);
+      .speed-value.testing {
+        color: var(--color-primary);
+      }
+
+      .speed-unit-inline {
+        font-size: 0.3em;
+        font-weight: 600;
         color: var(--color-text-muted);
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
+        letter-spacing: -0.02em;
       }
 
       .status {
-        min-height: 1.4rem;
+        text-align: center;
         font-size: var(--text-sm);
         color: var(--color-text-muted);
+        font-weight: 500;
+        min-height: 1.3rem;
+        margin-top: var(--space-4);
+        transition: color 0.3s ease;
+      }
+
+      .status.testing {
+        color: var(--color-primary);
+      }
+      .status.complete {
+        color: var(--color-success);
+      }
+      .status.failed {
+        color: var(--color-error);
       }
 
       .actions {
         display: flex;
         gap: var(--space-3);
         justify-content: center;
-        flex-wrap: wrap;
+        margin-bottom: var(--space-4);
       }
 
       .btn {
-        min-width: 9.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
         min-height: 2.75rem;
-        padding: 0 var(--space-4);
+        padding: 0.75rem 1.5rem;
         border-radius: var(--radius-full);
         font-size: var(--text-sm);
-        font-weight: 700;
+        font-weight: 600;
+        transition: transform var(--transition), background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        border: 1px solid transparent;
+        min-width: 9rem;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn:active {
+        transform: scale(0.97);
       }
 
       .btn-primary {
         background: var(--color-primary);
-        color: var(--color-text-inverse);
-        box-shadow: var(--shadow-sm);
+        color: #090c12;
+        font-weight: 700;
+        box-shadow: 0 10px 30px rgba(86, 198, 216, 0.18);
+        position: relative;
+        overflow: hidden;
       }
+
+      .btn-primary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+        background-size: 200% 100%;
+        transition: background-position 0.6s ease;
+      }
+
+      .btn-primary:hover::after {
+        background-position: -200% 0;
+      }
+
       .btn-primary:hover {
         background: var(--color-primary-hover);
+        box-shadow: 0 14px 40px rgba(86, 198, 216, 0.25);
+      }
+
+      .btn-primary:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
       }
 
       .btn-secondary {
-        background: var(--color-surface);
-        border: 1px solid
-          color-mix(in oklab, var(--color-text) 12%, transparent);
+        border-color: var(--color-border);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--color-text-muted);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--color-primary-highlight);
         color: var(--color-text);
       }
 
-      .stats {
+      .grid-2 {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 1fr 1fr;
         gap: var(--space-3);
-        text-align: right;
+        margin-bottom: var(--space-3);
       }
 
-      .stat {
-        background: color-mix(
-          in oklab,
-          var(--color-surface-2) 90%,
-          transparent
-        );
-        border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      .stat-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+        border: 1px solid var(--color-border);
         border-radius: var(--radius-lg);
-        padding: var(--space-3);
+        padding: var(--space-3) var(--space-4);
         display: grid;
-        gap: var(--space-2);
+        gap: 0.15rem;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(86, 198, 216, 0.25), transparent);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--color-primary-highlight);
+        box-shadow: var(--shadow-sm);
       }
 
       .stat-label {
         font-size: var(--text-xs);
         color: var(--color-text-muted);
-        letter-spacing: 0.08em;
         text-transform: uppercase;
-        font-weight: 700;
+        letter-spacing: 0.08em;
+        font-weight: 600;
       }
 
       .stat-value {
-        font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.28rem);
-        font-weight: 800;
+        font-family: var(--font-display);
+        font-size: var(--text-lg);
+        font-weight: 700;
+        letter-spacing: -0.02em;
         font-variant-numeric: tabular-nums lining-nums;
       }
 
-      .stat-note {
+      .progress-section {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-3) var(--space-4);
+        display: grid;
+        gap: 0.5rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .progress-section:hover {
+        border-color: var(--color-primary-highlight);
+      }
+
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .progress-label {
         font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+      }
+
+      .progress-time {
+        font-family: "ui-monospace", "SF Mono", monospace;
+        font-size: 0.7rem;
         color: var(--color-text-faint);
-        direction: ltr;
-        text-align: center;
+        font-weight: 500;
       }
 
       .progress-track {
-        position: relative;
-        height: 0.625rem;
-        background: color-mix(in oklab, var(--color-text) 10%, transparent);
+        height: 0.35rem;
+        background: rgba(173, 188, 214, 0.08);
         border-radius: var(--radius-full);
         overflow: hidden;
-        direction: ltr;
       }
 
       .progress-fill {
         height: 100%;
         border-radius: var(--radius-full);
-        background: var(--color-primary);
-        transition: width 0.25s ease;
+        background: linear-gradient(90deg, var(--color-primary), #7bd7e4);
+        transition: width 0.2s ease;
         will-change: width;
       }
 
-      .progress-text {
-        position: absolute;
-        inset: 0;
+      .network-bar {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.6rem;
-        font-weight: 800;
-        color: var(--color-text);
-        direction: ltr;
+        gap: var(--space-5);
+        padding-top: var(--space-3);
+        flex-wrap: wrap;
+      }
+
+      .network-item {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: var(--text-xs);
+        color: var(--color-text-faint);
+        font-weight: 500;
+      }
+
+      .network-item svg {
+        width: 0.75rem;
+        height: 0.75rem;
+        color: var(--color-primary);
+        flex: 0 0 auto;
+      }
+
+      .ping-dot {
+        display: inline-block;
+        width: 0.35rem;
+        height: 0.35rem;
+        border-radius: 50%;
+        background: var(--color-success);
+        margin-inline-end: 0.25rem;
+        vertical-align: middle;
+        animation: ping-glow 2s ease-in-out infinite;
+      }
+
+      @keyframes ping-glow {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
       }
 
       .footnote {
-        color: var(--color-text-faint);
+        text-align: center;
         font-size: var(--text-xs);
-        max-width: 42ch;
-        margin-inline: auto;
+        color: var(--color-text-faint);
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--color-divider);
+        margin-top: var(--space-4);
+        line-height: 1.4;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .sr-only {
@@ -524,89 +527,42 @@
         border-width: 0;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
       @media (max-width: 640px) {
         body {
           padding: var(--space-2);
         }
-        .app {
-          max-height: 98dvh;
-          border-radius: var(--radius-lg);
+        .app-inner {
+          padding: var(--space-4) var(--space-4) var(--space-4);
         }
-        .topbar {
-          padding: var(--space-2) var(--space-3);
-        }
-        .panel {
-          gap: var(--space-4);
-          padding: var(--space-4);
-        }
-        .stats {
+        .grid-2 {
           grid-template-columns: 1fr;
-        }
-        .btn {
-          width: 100%;
         }
         .actions {
           flex-direction: column;
         }
-        .speed-core {
-          width: 78%;
+        .btn {
+          width: 100%;
+          min-width: 0;
         }
-        .speed-shell {
-          width: min(100%, 14rem);
-        }
-        .speed-value {
-          font-size: clamp(1.8rem, 6vw, 2.5rem);
+        .speed-card {
+          padding: var(--space-5) var(--space-4);
         }
         h1 {
-          font-size: clamp(1.1rem, 4vw, 1.35rem);
-        }
-        .stat {
-          padding: var(--space-2) var(--space-3);
-        }
-        .footnote {
-          font-size: 0.65rem;
-        }
-      }
-
-      @media (max-height: 700px) {
-        .app {
-          max-height: 99dvh;
-        }
-        .panel {
-          padding: var(--space-3) var(--space-4);
-          gap: var(--space-2);
-        }
-        .speed-shell {
-          width: min(100%, 12rem);
-        }
-        .speed-value {
-          font-size: clamp(1.5rem, 5vw, 2.2rem);
-        }
-        .meter {
-          gap: var(--space-2);
-        }
-        .stats {
-          gap: var(--space-2);
-        }
-        .stat {
-          padding: var(--space-2);
-        }
-        .stat-label {
-          font-size: 0.6rem;
-        }
-        .stat-value {
-          font-size: clamp(0.85rem, 2.5vw, 1rem);
-        }
-        .title-wrap {
-          gap: 0;
-        }
-        .subtitle {
-          font-size: 0.75rem;
-        }
-        .btn {
-          min-height: 2.25rem;
-          min-width: 7rem;
-          padding: 0 var(--space-3);
+          font-size: var(--text-lg);
         }
       }
 
@@ -615,342 +571,136 @@
           padding: 0;
         }
         .app {
-          width: 100%;
-          max-height: 100dvh;
           border-radius: 0;
           border: none;
         }
-        .panel {
-          gap: var(--space-3);
+        .app-inner {
           padding: var(--space-3);
         }
-        .speed-shell {
-          width: min(100%, 11rem);
+        .speed-value {
+          font-size: 1.75rem;
+        }
+        .header-icon {
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+      }
+
+      @media (max-height: 700px) {
+        .app-inner {
+          padding: var(--space-3) var(--space-4);
+        }
+        .header {
+          margin-bottom: var(--space-3);
+        }
+        .speed-card {
+          padding: var(--space-3);
+          margin-bottom: var(--space-3);
         }
         .speed-value {
-          font-size: clamp(1.4rem, 7vw, 1.8rem);
+          font-size: clamp(2rem, 8vw, 3rem);
         }
-        .speed-unit {
-          font-size: var(--text-xs);
-        }
-        .brand span {
-          font-size: var(--text-xs);
-        }
-        .theme-toggle {
-          width: 2rem;
-          height: 2rem;
-        }
-        .stats {
-          gap: var(--space-2);
-        }
-        .stat-value {
-          font-size: 0.95rem;
-        }
-        .btn {
-          min-height: 2.25rem;
-          min-width: 0;
-          font-size: var(--text-xs);
-        }
-        .subtitle {
-          font-size: 0.75rem;
-        }
-        h1 {
-          font-size: 1rem;
+        .actions {
+          margin-bottom: var(--space-3);
         }
       }
     </style>
   </head>
   <body>
-    <a href="#main" class="sr-only" data-i18n="skipToContent">Skip to content</a>
+    <a href="#main" class="sr-only">Skip to content</a>
 
     <main class="app" id="main">
-      <header class="topbar">
-        <div class="topbar-start">
-          <div class="lang-switcher">
-            <button class="lang-btn" type="button" data-lang-btn aria-label="Switch language">
-              EN
-            </button>
-            <div class="lang-dropdown" data-lang-dropdown>
-              <button class="lang-option active" type="button" data-lang="en">English</button>
-              <button class="lang-option" type="button" data-lang="fa">فارسی</button>
-              <button class="lang-option" type="button" data-lang="ps">پښتو</button>
-            </div>
+      <div class="app-inner">
+        <header class="header reveal">
+          <div class="header-left">
+            <p class="eyebrow">Network Analysis</p>
+            <h1>Speed Test</h1>
           </div>
-
-          <div class="brand" data-i18n-aria="brandAria">
-            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-              <circle
-                cx="32"
-                cy="32"
-                r="24"
-                stroke="currentColor"
-                stroke-width="4"
-              ></circle>
-              <path
-                d="M20 38C25 27 37 21 47 21"
-                stroke="currentColor"
-                stroke-width="4"
-                stroke-linecap="round"
-              ></path>
-              <path
-                d="M35 29L47 21L39 33"
-                stroke="currentColor"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></path>
+          <div class="header-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="4" />
+              <line x1="12" y1="2" x2="12" y2="6" />
+              <line x1="12" y1="18" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="6" y2="12" />
+              <line x1="18" y1="12" x2="22" y2="12" />
             </svg>
-            <span data-i18n="brand">Speed Test</span>
           </div>
-        </div>
+        </header>
 
-        <button
-          class="theme-toggle"
-          type="button"
-          data-theme-toggle
-          data-i18n-aria="themeToggle"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79Z"></path>
-          </svg>
-        </button>
-      </header>
+        <section aria-label="Speed measurement">
+          <div class="speed-card reveal" id="speedCard">
+            <div class="speed-value" id="speedValue">0.00 <span class="speed-unit-inline">Mbps</span></div>
+            <div class="speed-label-top">Download Speed</div>
+            <p class="status" id="statusText" aria-live="polite">Press start to measure</p>
+          </div>
 
-      <section class="panel" data-i18n-aria="statsAria">
-        <div class="title-wrap">
-          <p class="eyebrow" data-i18n="eyebrow">Simple test</p>
-          <h1 id="page-title" data-i18n="title">Download Speed Test</h1>
-          <p class="subtitle" data-i18n="subtitle">
-            Measure your internet download speed with a quick and accurate test in seconds.
-          </p>
-        </div>
+          <div class="actions reveal">
+            <button class="btn btn-primary" id="startBtn" type="button">Start Test</button>
+            <button class="btn btn-secondary" id="resetBtn" type="button">Reset</button>
+          </div>
 
-        <div class="meter">
-          <div
-            class="speed-shell"
-            id="speedShell"
-            style="--progress: 0"
-            aria-hidden="true"
-          >
-            <div class="speed-core">
-              <div class="speed-value" id="speedValue">0.00</div>
-              <div class="speed-unit" data-i18n="speedUnit">Mbps</div>
+          <div class="grid-2 reveal">
+            <article class="stat-card">
+              <span class="stat-label">Peak Speed</span>
+              <strong class="stat-value" id="peakValue">0.00 Mbps</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Average</span>
+              <strong class="stat-value" id="avgValue">0.00 Mbps</strong>
+            </article>
+          </div>
+
+          <div class="progress-section reveal">
+            <div class="progress-header">
+              <span class="progress-label">Progress</span>
+              <span class="progress-time" id="durationNote">00:00 / 00:08</span>
             </div>
-          </div>
-          <p class="status" id="statusText" aria-live="polite" data-i18n="statusIdle">
-            Click the button to start the test.
-          </p>
-        </div>
-
-        <div class="actions">
-          <button class="btn btn-primary" id="startBtn" type="button" data-i18n="startBtn">
-            Start Test
-          </button>
-          <button class="btn btn-secondary" id="resetBtn" type="button" data-i18n="resetBtn">
-            Reset
-          </button>
-        </div>
-
-        <div class="stats" aria-label="Test details">
-          <article class="stat">
-            <span class="stat-label" data-i18n="statPeakLabel">Peak Speed</span>
-            <strong class="stat-value" id="peakValue">0.00 Mbps</strong>
-            <span class="stat-note" data-i18n="statPeakNote">Highest recorded value</span>
-          </article>
-          <article class="stat">
-            <span class="stat-label" data-i18n="statAvgLabel">Final Average</span>
-            <strong class="stat-value" id="avgValue">0.00 Mbps</strong>
-            <span class="stat-note" data-i18n="statAvgNote">Average of stable samples</span>
-          </article>
-          <article class="stat">
-            <span class="stat-label" data-i18n="statTimeLabel">Test Time</span>
             <div class="progress-track">
-              <div
-                class="progress-fill"
-                id="progressFill"
-                style="width: 0%"
-              ></div>
-              <span class="progress-text" id="progressText">0%</span>
+              <div class="progress-fill" id="progressFill" style="width: 0%"></div>
             </div>
-            <span class="stat-note" id="durationNote">00:00 / 00:08</span>
-          </article>
-        </div>
+          </div>
 
-        <p class="footnote" data-i18n="footnote">
-          This tool is optimized for production use and results reflect your actual network conditions.
-        </p>
-      </section>
+          <div class="network-bar reveal">
+            <span class="network-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="4" />
+                <line x1="12" y1="2" x2="12" y2="6" />
+                <line x1="12" y1="18" x2="12" y2="22" />
+                <line x1="2" y1="12" x2="6" y2="12" />
+                <line x1="18" y1="12" x2="22" y2="12" />
+              </svg>
+              <span>Cloudflare</span>
+            </span>
+            <span class="network-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              <span id="pingDisplay"><span class="ping-dot"></span>Ping: -- ms</span>
+            </span>
+          </div>
+
+          <p class="footnote reveal">
+            Results reflect your real network conditions. Optimized for production use.
+          </p>
+        </section>
+      </div>
     </main>
 
     <script>
       (() => {
-        const LANG_STORAGE_KEY = "speedtest-lang";
-        const html = document.documentElement;
-
-        const translations = {
-          en: {
-            langName: "English",
-            langShort: "EN",
-            langBtnAria: "Switch language",
-            brand: "Speed Test",
-            brandAria: "Speed test logo",
-            skipToContent: "Skip to content",
-            title: "Download Speed Test",
-            subtitle: "Measure your internet download speed with a quick and accurate test in seconds.",
-            statusIdle: "Click the button to start the test.",
-            statusTesting: "Measuring download speed...",
-            statusComplete: "Test complete.",
-            statusFailed: "Measurement failed.",
-            startBtn: "Start Test",
-            startBtnBusy: "Testing...",
-            resetBtn: "Reset",
-            eyebrow: "Simple test",
-            statPeakLabel: "Peak Speed",
-            statPeakNote: "Highest recorded value",
-            statAvgLabel: "Final Average",
-            statAvgNote: "Average of stable samples",
-            statTimeLabel: "Test Time",
-            statsAria: "Test details",
-            footnote: "This tool is optimized for production use and results reflect your actual network conditions.",
-            themeToggle: "Switch to dark mode",
-            themeToggleDark: "Switch to light mode",
-            speedUnit: "Mbps",
-          },
-          fa: {
-            langName: "فارسی",
-            langShort: "FA",
-            langBtnAria: "تغییر زبان",
-            brand: "تست سرعت",
-            brandAria: "لوگوی تست سرعت",
-            skipToContent: "پرش به محتوا",
-            title: "تست سرعت دانلود",
-            subtitle: "سرعت دانلود اینترنت خود را با یک تست سریع و دقیق در چند ثانیه اندازه‌گیری کنید.",
-            statusIdle: "برای شروع روی دکمه تست کلیک کن.",
-            statusTesting: "در حال اندازه‌گیری سرعت دانلود...",
-            statusComplete: "تست کامل شد.",
-            statusFailed: "اندازه‌گیری انجام نشد.",
-            startBtn: "شروع تست",
-            startBtnBusy: "در حال تست...",
-            resetBtn: "ریست",
-            eyebrow: "تست ساده",
-            statPeakLabel: "بیشترین سرعت",
-            statPeakNote: "بیشترین مقدار ثبت‌شده",
-            statAvgLabel: "میانگین نهایی",
-            statAvgNote: "میانگین نمونه‌های پایدار",
-            statTimeLabel: "زمان تست",
-            statsAria: "جزئیات تست",
-            footnote: "این ابزار برای استفاده در محیط Production بهینه‌سازی شده و نتایج آن بر اساس شرایط واقعی شبکه شما نمایش داده می‌شود.",
-            themeToggle: "تغییر به حالت تیره",
-            themeToggleDark: "تغییر به حالت روشن",
-            speedUnit: "Mbps",
-          },
-          ps: {
-            langName: "پښتو",
-            langShort: "PS",
-            langBtnAria: "ژبه بدل کړئ",
-            brand: "د سرعت ازموینه",
-            brandAria: "د سرعت ازموینې لوګو",
-            skipToContent: "محتوا ته تېر شئ",
-            title: "د ډاونلوډ سرعت ازموینه",
-            subtitle: "د خپل انټرنیټ د ډاونلوډ سرعت په څو ثانیو کې د یوې چټکې او دقیقې ازموینې سره اندازه کړئ.",
-            statusIdle: "د ازموینې پیلولو لپاره تڼۍ کلیک کړئ.",
-            statusTesting: "د ډاونلوډ سرعت اندازه کېږي...",
-            statusComplete: "ازموینه بشپړه شوه.",
-            statusFailed: "اندازه کول ناکام شول.",
-            startBtn: "ازموینه پیل کړئ",
-            startBtnBusy: "ازموینه روانه ده...",
-            resetBtn: "بیا تنظیم",
-            eyebrow: "ساده ازموینه",
-            statPeakLabel: "لوړ سرعت",
-            statPeakNote: "تر ټولو لوړ ثبت شوی ارزښت",
-            statAvgLabel: "نهایی اوسط",
-            statAvgNote: "د ثابتو نمونو اوسط",
-            statTimeLabel: "د ازموینې وخت",
-            statsAria: "د ازموینې جزئیات",
-            footnote: "دا وسیله د تولید چاپیریال لپاره بهینه شوې او پایلې یې ستاسو د شبکې اصلي شرایط منعکس کوي.",
-            themeToggle: "تیاره حالت ته لاړ شئ",
-            themeToggleDark: "روښانه حالت ته لاړ شئ",
-            speedUnit: "Mbps",
-          },
-        };
-
-        const t = (key) => translations[currentLang]?.[key] ?? translations.en[key] ?? key;
-
-        const rtlLangs = new Set(["fa", "ps"]);
-        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
-        if (!translations[currentLang]) currentLang = "en";
-
-        const themeToggle = document.querySelector("[data-theme-toggle]");
-        let currentTheme = "light";
-
-        const applyTheme = (theme) => {
-          currentTheme = theme;
-          html.setAttribute("data-theme", theme);
-          themeToggle.setAttribute("aria-label", t(theme === "dark" ? "themeToggleDark" : "themeToggle"));
-          themeToggle.innerHTML =
-            theme === "dark"
-              ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
-              : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79Z"></path></svg>';
-        };
-
-        const applyLang = (lang) => {
-          currentLang = lang;
-          localStorage.setItem(LANG_STORAGE_KEY, lang);
-
-          html.setAttribute("lang", lang);
-          html.setAttribute("dir", rtlLangs.has(lang) ? "rtl" : "ltr");
-
-          document.querySelectorAll("[data-i18n]").forEach((el) => {
-            const key = el.dataset.i18n;
-            el.textContent = t(key);
-          });
-
-          document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
-            const key = el.dataset.i18nAria;
-            el.setAttribute("aria-label", t(key));
-          });
-
-          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-            const key = el.dataset.i18nPlaceholder;
-            el.setAttribute("placeholder", t(key));
-          });
-
-          document.title = t("title");
-
-          const langBtn = document.querySelector("[data-lang-btn]");
-          langBtn.textContent = t("langShort");
-          langBtn.setAttribute("aria-label", t("langBtnAria"));
-
-          document.querySelectorAll("[data-lang]").forEach((btn) => {
-            btn.classList.toggle("active", btn.dataset.lang === lang);
-          });
-
-          if (!testState) {
-            els.statusText.textContent = t("statusIdle");
-          }
-
-          applyTheme(currentTheme);
-        };
-
         const els = {
-          speedShell: document.getElementById("speedShell"),
+          speedCard: document.getElementById("speedCard"),
           speedValue: document.getElementById("speedValue"),
           statusText: document.getElementById("statusText"),
           peakValue: document.getElementById("peakValue"),
           avgValue: document.getElementById("avgValue"),
           progressFill: document.getElementById("progressFill"),
-          progressText: document.getElementById("progressText"),
           durationNote: document.getElementById("durationNote"),
           startBtn: document.getElementById("startBtn"),
           resetBtn: document.getElementById("resetBtn"),
+          pingDisplay: document.getElementById("pingDisplay"),
         };
 
         const TEST_URL = "https://speed.cloudflare.com/__down?bytes=25000000";
@@ -959,170 +709,123 @@
         const MAX_PROGRESS_SPEED = 100;
         let testState = null;
 
-        const formatMbps = (value) => `${value.toFixed(2)} ${t("speedUnit")}`;
-        const formatTime = (ms) => {
-          const totalSec = Math.round(ms / 1000);
-          const m = String(Math.floor(totalSec / 60)).padStart(2, "0");
-          const s = String(totalSec % 60).padStart(2, "0");
-          return `${m}:${s}`;
-        };
-        const setProgress = (mbps) => {
-          const percent = Math.max(
-            0,
-            Math.min((mbps / MAX_PROGRESS_SPEED) * 100, 100),
-          );
-          els.speedShell.style.setProperty("--progress", percent.toFixed(2));
+        const fmt = (v) => `${v.toFixed(2)} Mbps`;
+        const fmtTime = (ms) => {
+          const t = Math.round(ms / 1000);
+          return `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
         };
 
         const resetUI = () => {
           els.speedValue.textContent = "0.00";
-          els.statusText.textContent = t("statusIdle");
-          els.peakValue.textContent = formatMbps(0);
-          els.avgValue.textContent = formatMbps(0);
+          els.speedValue.className = "speed-value";
+          els.statusText.textContent = "Press start to measure";
+          els.statusText.className = "status";
+          els.peakValue.textContent = fmt(0);
+          els.avgValue.textContent = fmt(0);
           els.progressFill.style.width = "0%";
-          els.progressText.textContent = "0%";
           els.durationNote.textContent = "00:00 / 00:08";
-          setProgress(0);
+          els.speedCard.classList.remove("testing");
+          els.pingDisplay.innerHTML = '<span class="ping-dot"></span>Ping: -- ms';
         };
 
-        const stopRunningTest = () => {
+        const stop = () => {
           if (!testState) return;
-          testState.controllers.forEach((controller) => controller.abort());
+          testState.controllers.forEach((c) => c.abort());
           clearInterval(testState.renderTimer);
           clearTimeout(testState.finishTimer);
           testState = null;
           els.startBtn.disabled = false;
-          els.startBtn.textContent = t("startBtn");
+          els.startBtn.textContent = "Start Test";
         };
 
-        const finalizeTest = () => {
+        const finish = () => {
           if (!testState) return;
-          const elapsedSeconds =
-            (performance.now() - testState.startedAt) / 1000;
-          const validSamples = testState.samples.slice(2);
-          const average = validSamples.length
-            ? validSamples.reduce((sum, value) => sum + value, 0) /
-              validSamples.length
-            : testState.currentMbps;
-          const finalValue = Number.isFinite(average) ? average : 0;
-          els.speedValue.textContent = finalValue.toFixed(2);
-          els.avgValue.textContent = formatMbps(finalValue);
-          els.peakValue.textContent = formatMbps(testState.peakMbps);
+          const sec = (performance.now() - testState.startedAt) / 1000;
+          const samples = testState.samples.slice(2);
+          const avg = samples.length ? samples.reduce((a, b) => a + b, 0) / samples.length : testState.currentMbps;
+          const v = Number.isFinite(avg) ? avg : 0;
+          els.speedValue.textContent = v.toFixed(2);
+          els.speedValue.className = "speed-value";
+          els.avgValue.textContent = fmt(v);
+          els.peakValue.textContent = fmt(testState.peakMbps);
           els.progressFill.style.width = "100%";
-          els.progressText.textContent = "100%";
-          els.durationNote.textContent = `${formatTime(TEST_DURATION_MS)} / ${formatTime(TEST_DURATION_MS)}`;
-          els.statusText.textContent =
-            finalValue > 0 ? t("statusComplete") : t("statusFailed");
-          setProgress(finalValue);
-          stopRunningTest();
+          els.durationNote.textContent = `${fmtTime(TEST_DURATION_MS)} / ${fmtTime(TEST_DURATION_MS)}`;
+          els.statusText.textContent = v > 0 ? "Test complete" : "Measurement failed";
+          els.statusText.className = v > 0 ? "status complete" : "status failed";
+          els.speedCard.classList.remove("testing");
+          stop();
         };
 
-        const runWorker = async (controller) => {
-          const cacheBuster = `t=${Date.now()}-${Math.random().toString(36).slice(2)}`;
-          const response = await fetch(`${TEST_URL}&${cacheBuster}`, {
+        const worker = async (ctl) => {
+          const r = await fetch(`${TEST_URL}&t=${Date.now()}-${Math.random().toString(36).slice(2)}`, {
             cache: "no-store",
             mode: "cors",
-            signal: controller.signal,
+            signal: ctl.signal,
           });
-          if (!response.ok || !response.body) throw new Error("Network error");
-
-          const reader = response.body.getReader();
+          if (!r.ok || !r.body) return;
+          const rd = r.body.getReader();
           while (true) {
-            const { done, value } = await reader.read();
+            const { done, value } = await rd.read();
             if (done || !testState) break;
             testState.bytesLoaded += value.byteLength;
           }
         };
 
-        const beginTest = async () => {
-          stopRunningTest();
+        const ping = async () => {
+          const start = performance.now();
+          try {
+            const ctl = new AbortController();
+            setTimeout(() => ctl.abort(), 3000);
+            await fetch(
+              `https://speed.cloudflare.com/__down?bytes=100&t=${Date.now()}-${Math.random().toString(36).slice(2)}`,
+              { cache: "no-store", mode: "cors", signal: ctl.signal },
+            );
+            els.pingDisplay.innerHTML = `<span class="ping-dot"></span>Ping: ${Math.round(performance.now() - start)} ms`;
+          } catch (_) {}
+        };
+
+        const begin = async () => {
+          stop();
           resetUI();
           els.startBtn.disabled = true;
-          els.startBtn.textContent = t("startBtnBusy");
-          els.statusText.textContent = t("statusTesting");
-
-          const startedAt = performance.now();
+          els.startBtn.textContent = "Testing...";
+          els.statusText.textContent = "Measuring download speed...";
+          els.statusText.className = "status testing";
+          await ping();
+          const t0 = performance.now();
           testState = {
-            startedAt,
-            bytesLoaded: 0,
-            currentMbps: 0,
-            peakMbps: 0,
-            samples: [],
-            controllers: [
-              new AbortController(),
-              new AbortController(),
-              new AbortController(),
-            ],
-            renderTimer: null,
-            finishTimer: null,
+            startedAt: t0, bytesLoaded: 0, currentMbps: 0, peakMbps: 0, samples: [],
+            controllers: [new AbortController(), new AbortController(), new AbortController()],
+            renderTimer: null, finishTimer: null,
           };
-
+          els.speedCard.classList.add("testing");
           testState.renderTimer = setInterval(() => {
             if (!testState) return;
-            const elapsedSeconds = Math.max(
-              (performance.now() - testState.startedAt) / 1000,
-              0.2,
-            );
-            const mbps =
-              (testState.bytesLoaded * 8) / elapsedSeconds / 1000 / 1000;
+            const sec = Math.max((performance.now() - testState.startedAt) / 1000, 0.2);
+            const mbps = (testState.bytesLoaded * 8) / sec / 1000 / 1000;
             testState.currentMbps = mbps;
             testState.peakMbps = Math.max(testState.peakMbps, mbps);
             testState.samples.push(mbps);
             if (testState.samples.length > 40) testState.samples.shift();
-
-            const elapsedMs = performance.now() - testState.startedAt;
-            const progressPct = Math.min(
-              (elapsedMs / TEST_DURATION_MS) * 100,
-              100,
-            );
+            const pct = Math.min(((performance.now() - testState.startedAt) / TEST_DURATION_MS) * 100, 100);
             els.speedValue.textContent = mbps.toFixed(2);
-            els.peakValue.textContent = formatMbps(testState.peakMbps);
-            els.progressFill.style.width = `${progressPct.toFixed(1)}%`;
-            els.progressText.textContent = `${Math.round(progressPct)}%`;
-            els.durationNote.textContent = `${formatTime(elapsedMs)} / ${formatTime(TEST_DURATION_MS)}`;
-            setProgress(mbps);
+            els.speedValue.className = "speed-value testing";
+            els.peakValue.textContent = fmt(testState.peakMbps);
+            els.progressFill.style.width = `${pct.toFixed(1)}%`;
+            els.durationNote.textContent = `${fmtTime(performance.now() - testState.startedAt)} / ${fmtTime(TEST_DURATION_MS)}`;
           }, UPDATE_INTERVAL_MS);
-
-          testState.finishTimer = setTimeout(finalizeTest, TEST_DURATION_MS);
-
-          try {
-            await Promise.allSettled(
-              testState.controllers.map((controller) => runWorker(controller)),
-            );
-          } catch (_) {}
+          testState.finishTimer = setTimeout(finish, TEST_DURATION_MS);
+          try { await Promise.allSettled(testState.controllers.map((c) => worker(c))); } catch (_) {}
         };
 
-        const langBtn = document.querySelector("[data-lang-btn]");
-        const langDropdown = document.querySelector("[data-lang-dropdown]");
-
-        langBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          langDropdown.classList.toggle("open");
-        });
-
-        document.querySelectorAll("[data-lang]").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            applyLang(btn.dataset.lang);
-            langDropdown.classList.remove("open");
-          });
-        });
-
-        document.addEventListener("click", () => {
-          langDropdown.classList.remove("open");
-        });
-
-        els.startBtn.addEventListener("click", beginTest);
-        els.resetBtn.addEventListener("click", () => {
-          stopRunningTest();
-          resetUI();
-        });
-
-        applyLang(currentLang);
-        themeToggle.addEventListener("click", () =>
-          applyTheme(currentTheme === "dark" ? "light" : "dark"),
-        );
-
+        els.startBtn.addEventListener("click", begin);
+        els.resetBtn.addEventListener("click", () => { stop(); resetUI(); });
         resetUI();
+
+        const ro = new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("visible"); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".reveal").forEach((el) => ro.observe(el));
       })();
     </script>
   </body>
