@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fast Style Download Test</title>
+    <link rel="icon" type="image/jpeg" href="fav.jpg" />
+    <title data-i18n="title">Speed Test</title>
     <link rel="preconnect" href="https://api.fontshare.com" />
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
@@ -129,7 +130,8 @@
         display: grid;
         place-items: center;
         padding: var(--space-3);
-        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
       }
       button,
       input {
@@ -170,14 +172,15 @@
 
       .app {
         width: min(100%, 680px);
-        max-height: min(92dvh, 860px);
+        max-height: min(97dvh, 860px);
         background: color-mix(in oklab, var(--color-surface) 86%, transparent);
         border: 1px solid
           color-mix(in oklab, var(--color-text) 10%, transparent);
         box-shadow: var(--shadow-md);
         border-radius: var(--radius-xl);
         backdrop-filter: blur(16px);
-        overflow: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
       }
 
       .topbar {
@@ -208,6 +211,73 @@
         height: 1.75rem;
         color: var(--color-primary);
         flex: 0 0 auto;
+      }
+
+      .topbar-start {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .lang-switcher {
+        position: relative;
+        display: inline-flex;
+      }
+
+      .lang-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: var(--radius-full);
+        display: inline-grid;
+        place-items: center;
+        border: 1px solid
+          color-mix(in oklab, var(--color-text) 12%, transparent);
+        background: var(--color-surface);
+        color: var(--color-text);
+        box-shadow: var(--shadow-sm);
+        font-size: var(--text-sm);
+        font-weight: 700;
+      }
+
+      .lang-dropdown {
+        position: absolute;
+        top: calc(100% + 4px);
+        inset-inline-start: 0;
+        min-width: 8rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        display: none;
+        flex-direction: column;
+        z-index: 50;
+        overflow: hidden;
+      }
+
+      .lang-dropdown.open {
+        display: flex;
+      }
+
+      .lang-option {
+        padding: var(--space-2) var(--space-3);
+        background: none;
+        border: none;
+        text-align: start;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--color-text);
+        cursor: pointer;
+        transition: background var(--transition-interactive);
+      }
+
+      .lang-option:hover {
+        background: var(--color-surface-2);
+      }
+
+      .lang-option.active {
+        background: var(--color-primary-highlight);
+        color: var(--color-primary);
+        font-weight: 700;
       }
 
       .theme-toggle {
@@ -402,6 +472,37 @@
       .stat-note {
         font-size: var(--text-xs);
         color: var(--color-text-faint);
+        direction: ltr;
+        text-align: center;
+      }
+
+      .progress-track {
+        position: relative;
+        height: 0.625rem;
+        background: color-mix(in oklab, var(--color-text) 10%, transparent);
+        border-radius: var(--radius-full);
+        overflow: hidden;
+        direction: ltr;
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: var(--radius-full);
+        background: var(--color-primary);
+        transition: width 0.25s ease;
+        will-change: width;
+      }
+
+      .progress-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: var(--color-text);
+        direction: ltr;
       }
 
       .footnote {
@@ -424,11 +525,19 @@
       }
 
       @media (max-width: 640px) {
+        body {
+          padding: var(--space-2);
+        }
+        .app {
+          max-height: 98dvh;
+          border-radius: var(--radius-lg);
+        }
         .topbar {
-          padding-inline: var(--space-4);
+          padding: var(--space-2) var(--space-3);
         }
         .panel {
-          gap: var(--space-6);
+          gap: var(--space-4);
+          padding: var(--space-4);
         }
         .stats {
           grid-template-columns: 1fr;
@@ -442,45 +551,164 @@
         .speed-core {
           width: 78%;
         }
+        .speed-shell {
+          width: min(100%, 14rem);
+        }
+        .speed-value {
+          font-size: clamp(1.8rem, 6vw, 2.5rem);
+        }
+        h1 {
+          font-size: clamp(1.1rem, 4vw, 1.35rem);
+        }
+        .stat {
+          padding: var(--space-2) var(--space-3);
+        }
+        .footnote {
+          font-size: 0.65rem;
+        }
+      }
+
+      @media (max-height: 700px) {
+        .app {
+          max-height: 99dvh;
+        }
+        .panel {
+          padding: var(--space-3) var(--space-4);
+          gap: var(--space-2);
+        }
+        .speed-shell {
+          width: min(100%, 12rem);
+        }
+        .speed-value {
+          font-size: clamp(1.5rem, 5vw, 2.2rem);
+        }
+        .meter {
+          gap: var(--space-2);
+        }
+        .stats {
+          gap: var(--space-2);
+        }
+        .stat {
+          padding: var(--space-2);
+        }
+        .stat-label {
+          font-size: 0.6rem;
+        }
+        .stat-value {
+          font-size: clamp(0.85rem, 2.5vw, 1rem);
+        }
+        .title-wrap {
+          gap: 0;
+        }
+        .subtitle {
+          font-size: 0.75rem;
+        }
+        .btn {
+          min-height: 2.25rem;
+          min-width: 7rem;
+          padding: 0 var(--space-3);
+        }
+      }
+
+      @media (max-width: 400px) {
+        body {
+          padding: 0;
+        }
+        .app {
+          width: 100%;
+          max-height: 100dvh;
+          border-radius: 0;
+          border: none;
+        }
+        .panel {
+          gap: var(--space-3);
+          padding: var(--space-3);
+        }
+        .speed-shell {
+          width: min(100%, 11rem);
+        }
+        .speed-value {
+          font-size: clamp(1.4rem, 7vw, 1.8rem);
+        }
+        .speed-unit {
+          font-size: var(--text-xs);
+        }
+        .brand span {
+          font-size: var(--text-xs);
+        }
+        .theme-toggle {
+          width: 2rem;
+          height: 2rem;
+        }
+        .stats {
+          gap: var(--space-2);
+        }
+        .stat-value {
+          font-size: 0.95rem;
+        }
+        .btn {
+          min-height: 2.25rem;
+          min-width: 0;
+          font-size: var(--text-xs);
+        }
+        .subtitle {
+          font-size: 0.75rem;
+        }
+        h1 {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
   <body>
-    <a href="#main" class="sr-only">پرش به محتوا</a>
+    <a href="#main" class="sr-only" data-i18n="skipToContent">Skip to content</a>
 
     <main class="app" id="main">
       <header class="topbar">
-        <div class="brand" aria-label="لوگوی تست سرعت">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle
-              cx="32"
-              cy="32"
-              r="24"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              d="M20 38C25 27 37 21 47 21"
-              stroke="currentColor"
-              stroke-width="4"
-              stroke-linecap="round"
-            ></path>
-            <path
-              d="M35 29L47 21L39 33"
-              stroke="currentColor"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </svg>
-          <span>Download Speed Test</span>
+        <div class="topbar-start">
+          <div class="lang-switcher">
+            <button class="lang-btn" type="button" data-lang-btn aria-label="Switch language">
+              EN
+            </button>
+            <div class="lang-dropdown" data-lang-dropdown>
+              <button class="lang-option active" type="button" data-lang="en">English</button>
+              <button class="lang-option" type="button" data-lang="fa">فارسی</button>
+              <button class="lang-option" type="button" data-lang="ps">پښتو</button>
+            </div>
+          </div>
+
+          <div class="brand" data-i18n-aria="brandAria">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <circle
+                cx="32"
+                cy="32"
+                r="24"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                d="M20 38C25 27 37 21 47 21"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+              ></path>
+              <path
+                d="M35 29L47 21L39 33"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <span data-i18n="brand">Speed Test</span>
+          </div>
         </div>
 
         <button
           class="theme-toggle"
           type="button"
           data-theme-toggle
-          aria-label="تغییر تم"
+          data-i18n-aria="themeToggle"
         >
           <svg
             width="20"
@@ -496,13 +724,12 @@
         </button>
       </header>
 
-      <section class="panel" aria-labelledby="page-title">
+      <section class="panel" data-i18n-aria="statsAria">
         <div class="title-wrap">
-          <p class="eyebrow">Simple test</p>
-          <h1 id="page-title">تست سرعت دانلود</h1>
-          <p class="subtitle">
-            سرعت دانلود اینترنت خود را با یک تست سریع و دقیق در چند ثانیه
-            اندازه‌گیری کنید.
+          <p class="eyebrow" data-i18n="eyebrow">Simple test</p>
+          <h1 id="page-title" data-i18n="title">Download Speed Test</h1>
+          <p class="subtitle" data-i18n="subtitle">
+            Measure your internet download speed with a quick and accurate test in seconds.
           </p>
         </div>
 
@@ -515,69 +742,203 @@
           >
             <div class="speed-core">
               <div class="speed-value" id="speedValue">0.00</div>
-              <div class="speed-unit">Mbps</div>
+              <div class="speed-unit" data-i18n="speedUnit">Mbps</div>
             </div>
           </div>
-          <p class="status" id="statusText" aria-live="polite">
-            برای شروع روی دکمه تست کلیک کن.
+          <p class="status" id="statusText" aria-live="polite" data-i18n="statusIdle">
+            Click the button to start the test.
           </p>
         </div>
 
         <div class="actions">
-          <button class="btn btn-primary" id="startBtn" type="button">
-            شروع تست
+          <button class="btn btn-primary" id="startBtn" type="button" data-i18n="startBtn">
+            Start Test
           </button>
-          <button class="btn btn-secondary" id="resetBtn" type="button">
-            ریست
+          <button class="btn btn-secondary" id="resetBtn" type="button" data-i18n="resetBtn">
+            Reset
           </button>
         </div>
 
-        <div class="stats" aria-label="جزئیات تست">
+        <div class="stats" aria-label="Test details">
           <article class="stat">
-            <span class="stat-label">بیشترین سرعت</span>
+            <span class="stat-label" data-i18n="statPeakLabel">Peak Speed</span>
             <strong class="stat-value" id="peakValue">0.00 Mbps</strong>
-            <span class="stat-note">بیشترین مقدار ثبت‌شده</span>
+            <span class="stat-note" data-i18n="statPeakNote">Highest recorded value</span>
           </article>
           <article class="stat">
-            <span class="stat-label">میانگین نهایی</span>
+            <span class="stat-label" data-i18n="statAvgLabel">Final Average</span>
             <strong class="stat-value" id="avgValue">0.00 Mbps</strong>
-            <span class="stat-note">میانگین نمونه‌های پایدار</span>
+            <span class="stat-note" data-i18n="statAvgNote">Average of stable samples</span>
           </article>
           <article class="stat">
-            <span class="stat-label">زمان تست</span>
-            <strong class="stat-value" id="durationValue">0.0s</strong>
-            <span class="stat-note">مدت اجرای اندازه‌گیری</span>
+            <span class="stat-label" data-i18n="statTimeLabel">Test Time</span>
+            <div class="progress-track">
+              <div
+                class="progress-fill"
+                id="progressFill"
+                style="width: 0%"
+              ></div>
+              <span class="progress-text" id="progressText">0%</span>
+            </div>
+            <span class="stat-note" id="durationNote">00:00 / 00:08</span>
           </article>
         </div>
 
-        <p class="footnote">
-          این ابزار برای استفاده در محیط Production بهینه‌سازی شده و نتایج آن بر
-          اساس شرایط واقعی شبکه شما نمایش داده می‌شود.
+        <p class="footnote" data-i18n="footnote">
+          This tool is optimized for production use and results reflect your actual network conditions.
         </p>
       </section>
     </main>
 
     <script>
       (() => {
+        const LANG_STORAGE_KEY = "speedtest-lang";
         const html = document.documentElement;
+
+        const translations = {
+          en: {
+            langName: "English",
+            langShort: "EN",
+            langBtnAria: "Switch language",
+            brand: "Speed Test",
+            brandAria: "Speed test logo",
+            skipToContent: "Skip to content",
+            title: "Download Speed Test",
+            subtitle: "Measure your internet download speed with a quick and accurate test in seconds.",
+            statusIdle: "Click the button to start the test.",
+            statusTesting: "Measuring download speed...",
+            statusComplete: "Test complete.",
+            statusFailed: "Measurement failed.",
+            startBtn: "Start Test",
+            startBtnBusy: "Testing...",
+            resetBtn: "Reset",
+            eyebrow: "Simple test",
+            statPeakLabel: "Peak Speed",
+            statPeakNote: "Highest recorded value",
+            statAvgLabel: "Final Average",
+            statAvgNote: "Average of stable samples",
+            statTimeLabel: "Test Time",
+            statsAria: "Test details",
+            footnote: "This tool is optimized for production use and results reflect your actual network conditions.",
+            themeToggle: "Switch to dark mode",
+            themeToggleDark: "Switch to light mode",
+            speedUnit: "Mbps",
+          },
+          fa: {
+            langName: "فارسی",
+            langShort: "FA",
+            langBtnAria: "تغییر زبان",
+            brand: "تست سرعت",
+            brandAria: "لوگوی تست سرعت",
+            skipToContent: "پرش به محتوا",
+            title: "تست سرعت دانلود",
+            subtitle: "سرعت دانلود اینترنت خود را با یک تست سریع و دقیق در چند ثانیه اندازه‌گیری کنید.",
+            statusIdle: "برای شروع روی دکمه تست کلیک کن.",
+            statusTesting: "در حال اندازه‌گیری سرعت دانلود...",
+            statusComplete: "تست کامل شد.",
+            statusFailed: "اندازه‌گیری انجام نشد.",
+            startBtn: "شروع تست",
+            startBtnBusy: "در حال تست...",
+            resetBtn: "ریست",
+            eyebrow: "تست ساده",
+            statPeakLabel: "بیشترین سرعت",
+            statPeakNote: "بیشترین مقدار ثبت‌شده",
+            statAvgLabel: "میانگین نهایی",
+            statAvgNote: "میانگین نمونه‌های پایدار",
+            statTimeLabel: "زمان تست",
+            statsAria: "جزئیات تست",
+            footnote: "این ابزار برای استفاده در محیط Production بهینه‌سازی شده و نتایج آن بر اساس شرایط واقعی شبکه شما نمایش داده می‌شود.",
+            themeToggle: "تغییر به حالت تیره",
+            themeToggleDark: "تغییر به حالت روشن",
+            speedUnit: "Mbps",
+          },
+          ps: {
+            langName: "پښتو",
+            langShort: "PS",
+            langBtnAria: "ژبه بدل کړئ",
+            brand: "د سرعت ازموینه",
+            brandAria: "د سرعت ازموینې لوګو",
+            skipToContent: "محتوا ته تېر شئ",
+            title: "د ډاونلوډ سرعت ازموینه",
+            subtitle: "د خپل انټرنیټ د ډاونلوډ سرعت په څو ثانیو کې د یوې چټکې او دقیقې ازموینې سره اندازه کړئ.",
+            statusIdle: "د ازموینې پیلولو لپاره تڼۍ کلیک کړئ.",
+            statusTesting: "د ډاونلوډ سرعت اندازه کېږي...",
+            statusComplete: "ازموینه بشپړه شوه.",
+            statusFailed: "اندازه کول ناکام شول.",
+            startBtn: "ازموینه پیل کړئ",
+            startBtnBusy: "ازموینه روانه ده...",
+            resetBtn: "بیا تنظیم",
+            eyebrow: "ساده ازموینه",
+            statPeakLabel: "لوړ سرعت",
+            statPeakNote: "تر ټولو لوړ ثبت شوی ارزښت",
+            statAvgLabel: "نهایی اوسط",
+            statAvgNote: "د ثابتو نمونو اوسط",
+            statTimeLabel: "د ازموینې وخت",
+            statsAria: "د ازموینې جزئیات",
+            footnote: "دا وسیله د تولید چاپیریال لپاره بهینه شوې او پایلې یې ستاسو د شبکې اصلي شرایط منعکس کوي.",
+            themeToggle: "تیاره حالت ته لاړ شئ",
+            themeToggleDark: "روښانه حالت ته لاړ شئ",
+            speedUnit: "Mbps",
+          },
+        };
+
+        const t = (key) => translations[currentLang]?.[key] ?? translations.en[key] ?? key;
+
+        const rtlLangs = new Set(["fa", "ps"]);
+        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || "en";
+        if (!translations[currentLang]) currentLang = "en";
+
         const themeToggle = document.querySelector("[data-theme-toggle]");
         let currentTheme = "light";
+
         const applyTheme = (theme) => {
           currentTheme = theme;
           html.setAttribute("data-theme", theme);
-          themeToggle.setAttribute(
-            "aria-label",
-            theme === "dark" ? "تغییر به حالت روشن" : "تغییر به حالت تیره",
-          );
+          themeToggle.setAttribute("aria-label", t(theme === "dark" ? "themeToggleDark" : "themeToggle"));
           themeToggle.innerHTML =
             theme === "dark"
               ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
               : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79Z"></path></svg>';
         };
-        applyTheme(currentTheme);
-        themeToggle.addEventListener("click", () =>
-          applyTheme(currentTheme === "dark" ? "light" : "dark"),
-        );
+
+        const applyLang = (lang) => {
+          currentLang = lang;
+          localStorage.setItem(LANG_STORAGE_KEY, lang);
+
+          html.setAttribute("lang", lang);
+          html.setAttribute("dir", rtlLangs.has(lang) ? "rtl" : "ltr");
+
+          document.querySelectorAll("[data-i18n]").forEach((el) => {
+            const key = el.dataset.i18n;
+            el.textContent = t(key);
+          });
+
+          document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+            const key = el.dataset.i18nAria;
+            el.setAttribute("aria-label", t(key));
+          });
+
+          document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+            const key = el.dataset.i18nPlaceholder;
+            el.setAttribute("placeholder", t(key));
+          });
+
+          document.title = t("title");
+
+          const langBtn = document.querySelector("[data-lang-btn]");
+          langBtn.textContent = t("langShort");
+          langBtn.setAttribute("aria-label", t("langBtnAria"));
+
+          document.querySelectorAll("[data-lang]").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.lang === lang);
+          });
+
+          if (!testState) {
+            els.statusText.textContent = t("statusIdle");
+          }
+
+          applyTheme(currentTheme);
+        };
 
         const els = {
           speedShell: document.getElementById("speedShell"),
@@ -585,7 +946,9 @@
           statusText: document.getElementById("statusText"),
           peakValue: document.getElementById("peakValue"),
           avgValue: document.getElementById("avgValue"),
-          durationValue: document.getElementById("durationValue"),
+          progressFill: document.getElementById("progressFill"),
+          progressText: document.getElementById("progressText"),
+          durationNote: document.getElementById("durationNote"),
           startBtn: document.getElementById("startBtn"),
           resetBtn: document.getElementById("resetBtn"),
         };
@@ -593,10 +956,16 @@
         const TEST_URL = "https://speed.cloudflare.com/__down?bytes=25000000";
         const TEST_DURATION_MS = 8000;
         const UPDATE_INTERVAL_MS = 250;
-        const MAX_PROGRESS_SPEED = 200;
+        const MAX_PROGRESS_SPEED = 100;
         let testState = null;
 
-        const formatMbps = (value) => `${value.toFixed(2)} Mbps`;
+        const formatMbps = (value) => `${value.toFixed(2)} ${t("speedUnit")}`;
+        const formatTime = (ms) => {
+          const totalSec = Math.round(ms / 1000);
+          const m = String(Math.floor(totalSec / 60)).padStart(2, "0");
+          const s = String(totalSec % 60).padStart(2, "0");
+          return `${m}:${s}`;
+        };
         const setProgress = (mbps) => {
           const percent = Math.max(
             0,
@@ -607,10 +976,12 @@
 
         const resetUI = () => {
           els.speedValue.textContent = "0.00";
-          els.statusText.textContent = "برای شروع روی دکمه تست کلیک کن.";
-          els.peakValue.textContent = "0.00 Mbps";
-          els.avgValue.textContent = "0.00 Mbps";
-          els.durationValue.textContent = "0.0s";
+          els.statusText.textContent = t("statusIdle");
+          els.peakValue.textContent = formatMbps(0);
+          els.avgValue.textContent = formatMbps(0);
+          els.progressFill.style.width = "0%";
+          els.progressText.textContent = "0%";
+          els.durationNote.textContent = "00:00 / 00:08";
           setProgress(0);
         };
 
@@ -621,7 +992,7 @@
           clearTimeout(testState.finishTimer);
           testState = null;
           els.startBtn.disabled = false;
-          els.startBtn.textContent = "شروع تست";
+          els.startBtn.textContent = t("startBtn");
         };
 
         const finalizeTest = () => {
@@ -637,9 +1008,11 @@
           els.speedValue.textContent = finalValue.toFixed(2);
           els.avgValue.textContent = formatMbps(finalValue);
           els.peakValue.textContent = formatMbps(testState.peakMbps);
-          els.durationValue.textContent = `${elapsedSeconds.toFixed(1)}s`;
+          els.progressFill.style.width = "100%";
+          els.progressText.textContent = "100%";
+          els.durationNote.textContent = `${formatTime(TEST_DURATION_MS)} / ${formatTime(TEST_DURATION_MS)}`;
           els.statusText.textContent =
-            finalValue > 0 ? "تست کامل شد." : "اندازه‌گیری انجام نشد.";
+            finalValue > 0 ? t("statusComplete") : t("statusFailed");
           setProgress(finalValue);
           stopRunningTest();
         };
@@ -665,8 +1038,8 @@
           stopRunningTest();
           resetUI();
           els.startBtn.disabled = true;
-          els.startBtn.textContent = "در حال تست...";
-          els.statusText.textContent = "در حال اندازه‌گیری سرعت دانلود...";
+          els.startBtn.textContent = t("startBtnBusy");
+          els.statusText.textContent = t("statusTesting");
 
           const startedAt = performance.now();
           testState = {
@@ -697,9 +1070,16 @@
             testState.samples.push(mbps);
             if (testState.samples.length > 40) testState.samples.shift();
 
+            const elapsedMs = performance.now() - testState.startedAt;
+            const progressPct = Math.min(
+              (elapsedMs / TEST_DURATION_MS) * 100,
+              100,
+            );
             els.speedValue.textContent = mbps.toFixed(2);
             els.peakValue.textContent = formatMbps(testState.peakMbps);
-            els.durationValue.textContent = `${elapsedSeconds.toFixed(1)}s`;
+            els.progressFill.style.width = `${progressPct.toFixed(1)}%`;
+            els.progressText.textContent = `${Math.round(progressPct)}%`;
+            els.durationNote.textContent = `${formatTime(elapsedMs)} / ${formatTime(TEST_DURATION_MS)}`;
             setProgress(mbps);
           }, UPDATE_INTERVAL_MS);
 
@@ -712,11 +1092,35 @@
           } catch (_) {}
         };
 
+        const langBtn = document.querySelector("[data-lang-btn]");
+        const langDropdown = document.querySelector("[data-lang-dropdown]");
+
+        langBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          langDropdown.classList.toggle("open");
+        });
+
+        document.querySelectorAll("[data-lang]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            applyLang(btn.dataset.lang);
+            langDropdown.classList.remove("open");
+          });
+        });
+
+        document.addEventListener("click", () => {
+          langDropdown.classList.remove("open");
+        });
+
         els.startBtn.addEventListener("click", beginTest);
         els.resetBtn.addEventListener("click", () => {
           stopRunningTest();
           resetUI();
         });
+
+        applyLang(currentLang);
+        themeToggle.addEventListener("click", () =>
+          applyTheme(currentTheme === "dark" ? "light" : "dark"),
+        );
 
         resetUI();
       })();
